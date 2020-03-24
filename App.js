@@ -12,6 +12,9 @@ class App extends Component {
     fname: "text"
     sname: "text"
   }
+  getData(){
+    console.log("ggjh");
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -40,7 +43,7 @@ class App extends Component {
         icon="mood" 
         mode="contained" 
         style={{margin:10}}
-        onPress={() => console.log('Pressed')}>
+        onPress={this.getData.bind(this)}>
           Calculate
        </Button>
       </View>
