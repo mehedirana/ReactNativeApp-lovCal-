@@ -12,10 +12,10 @@ class App extends Component {
   state() {
     fname: ''
     sname: ''
-    data: "loading"
+    result: "loading"
   }
   getData() {
-    fetch("https://love-calculator.p.rapidapi.com/getPercentage?fname=John&sname=Alice",
+    fetch(`https://love-calculator.p.rapidapi.com/getPercentage?fname=${this.state.fname}&sname=${this.state.sname}`,
       {
         // "method": "GET",
         "headers": {
@@ -28,12 +28,15 @@ class App extends Component {
       .then(data => data.json())
       .then(data2 => {
         console.log(data2)
+        this.setState({
+          result: data2
+        })
       })
   }
   render() {
     return (
       <View style={styles.container}>
-        <Appbar.Header >
+        <Appbar.Header style ={{backgroundColor:'#6131ff'}} >
 
           <Appbar.Content
             style={{ alignItems: 'center' }}
@@ -43,25 +46,27 @@ class App extends Component {
 
         </Appbar.Header>
         <TextInput
+          style ={{backgroundColor:'#fff'}}
           label="Person 1(Male)"
           value={this.state.fname}
-          onChangeText={text => this.setState({ text })}
+          onChangeText={text => this.setState({fname: text})}
 
         />
         <TextInput
+        style ={{backgroundColor:'#fff'}}
           label='Person 2(Female)'
           value={this.state.sname}
-          onChangeText={text => this.setState({ text })}
+          onChangeText={text => this.setState({sname: text})}
 
         />
         <Button
           icon="mood"
           mode="contained"
-          style={{ margin: 10 }}
+          style={{ margin: 20, justifyContent:'center', textAlign:'center', backgroundColor:'#6131ff'}}
           onPress={this.getData.bind(this)}>
           Calculate
        </Button>
-       <DisplayLove/>
+       <DisplayLove data ={this.state.result}/>
       </View>
     );
   }
