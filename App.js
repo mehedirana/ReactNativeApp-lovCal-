@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import { TextInput, Appbar, Button } from 'react-native-paper';
+import DisplayLove from './components/DisplayLove';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -9,24 +10,38 @@ const instructions = Platform.select({
 
 class App extends Component {
   state() {
-    fname: "text"
-    sname: "text"
+    fname: ''
+    sname: ''
+    data: "loading"
   }
-  getData(){
-    console.log("ggjh");
+  getData() {
+    fetch("https://love-calculator.p.rapidapi.com/getPercentage?fname=John&sname=Alice",
+      {
+        // "method": "GET",
+        "headers": {
+          "x-rapidapi-host": "love-calculator.p.rapidapi.com",
+          "x-rapidapi-key": "1cfc3d9cccmsh24237f3d43d59eep103a7bjsn11b10383e1b7"
+        }
+      }
+
+    )
+      .then(data => data.json())
+      .then(data2 => {
+        console.log(data2)
+      })
   }
   render() {
     return (
       <View style={styles.container}>
         <Appbar.Header >
-       
-        <Appbar.Content
-        style={{alignItems:'center'}}
-          title="Love % Calculator"
-          subtitle="Calculate your love %"
-        />
-  
-      </Appbar.Header>
+
+          <Appbar.Content
+            style={{ alignItems: 'center' }}
+            title="Love % Calculator"
+            subtitle="Calculate your love %"
+          />
+
+        </Appbar.Header>
         <TextInput
           label="Person 1(Male)"
           value={this.state.fname}
@@ -39,13 +54,14 @@ class App extends Component {
           onChangeText={text => this.setState({ text })}
 
         />
-        <Button 
-        icon="mood" 
-        mode="contained" 
-        style={{margin:10}}
-        onPress={this.getData.bind(this)}>
+        <Button
+          icon="mood"
+          mode="contained"
+          style={{ margin: 10 }}
+          onPress={this.getData.bind(this)}>
           Calculate
        </Button>
+       <DisplayLove/>
       </View>
     );
   }
