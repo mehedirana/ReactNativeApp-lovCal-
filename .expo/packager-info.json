@@ -2,9 +2,9 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 46556,
-  "expoServerNgrokUrl": "https://r2-gmc.anonymous.calculator.exp.direct",
-  "packagerNgrokUrl": "https://packager.r2-gmc.anonymous.calculator.exp.direct",
-  "ngrokPid": 63060,
+  "packagerPid": 8184,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null,
   "webpackServerPort": 19006
 }

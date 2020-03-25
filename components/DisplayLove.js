@@ -4,12 +4,14 @@ import { View, Text, StyleSheet } from 'react-native';
 const DisplayLove = (props) => {
 
     console.log(props);
+    console.log("i m from com. lovedis");
     if (props.data == "loading") {
 
-        <Text>Please wait someting</Text>
+        return  <Text>Please wait someting</Text>
+        
     }
-    if(props.data=="message"){
-        <Text>Someting went wrong, try again</Text>
+    if (props.data.message) {
+        return <Text>Someting went wrong, try again</Text>
     }
     else {
         return (

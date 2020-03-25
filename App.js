@@ -63,7 +63,8 @@ class App extends Component {
           icon="mood"
           mode="contained"
           style={{ margin: 20, justifyContent:'center', textAlign:'center', backgroundColor:'#6131ff'}}
-          onPress={this.getData.bind(this)}>
+          onPress={this.getData.bind(this)}
+          >
           Calculate
        </Button>
        <DisplayLove data ={this.state.result}/>
