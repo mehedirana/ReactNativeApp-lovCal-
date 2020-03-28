@@ -9,15 +9,15 @@ const instructions = Platform.select({
 });
 
 class App extends Component {
-  state() {
-    fname: ''
-    sname: ''
-    result: "loading"
+  state = {
+    fname: '',
+    sname: '',
+    result: "loading",
   }
   getData() {
     fetch(`https://love-calculator.p.rapidapi.com/getPercentage?fname=${this.state.fname}&sname=${this.state.sname}`,
       {
-        // "method": "GET",
+      //   "method": "GET",
         "headers": {
           "x-rapidapi-host": "love-calculator.p.rapidapi.com",
           "x-rapidapi-key": "1cfc3d9cccmsh24237f3d43d59eep103a7bjsn11b10383e1b7"
@@ -28,10 +28,9 @@ class App extends Component {
       .then(data => data.json())
       .then(data2 => {
         console.log(data2)
-        this.setState({
-          result: data2
-        })
-      })
+        this.setState({result: data2})
+      }
+    )
   }
   render() {
     return (
@@ -62,14 +61,14 @@ class App extends Component {
         <Button
           icon="mood"
           mode="contained"
-          style={{ margin: 20, justifyContent:'center', textAlign:'center', backgroundColor:'#6131ff'}}
+          style={{ margin: 20, justifyContent:'center',backgroundColor:'#6131ff'}}
           onPress={this.getData.bind(this)}
           >
           Calculate
        </Button>
-       <DisplayLove data ={this.state.result}/>
+       <DisplayLove data ={this.state.result} />
       </View>
-    );
+    )
   }
 }
 export default App;
